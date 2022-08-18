@@ -1,0 +1,19 @@
+class Solution {
+public:
+	  int mlen = 100001;
+    int minSetSize(vector<int>& arr) {
+    	if(arr.size() == 0)	return 0;
+    	int sum = 0, res;
+    	vector<int> times(mlen, 0);
+    	for(int i = 0; i < arr.size(); i++){
+    		times[arr[i]]++;
+		}
+		sort(times.begin(), times.end(), greater<int>());
+		for(res = 0; res < mlen; res++){
+			sum += times[res];
+			if(sum >= arr.size()/2)
+				break;
+		}
+		return res + 1;
+    } 
+};
