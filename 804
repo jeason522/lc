@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int uniqueMorseRepresentations(vector<string>& words) {
+    	int uniqueMorseRepresentations(vector<string>& words) {
         vector<string> morse = {".-","-...","-.-.","-..",".","..-.",
 		"--.","....","..",".---","-.-",".-..","--","-.","---",".--.",
 		"--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
