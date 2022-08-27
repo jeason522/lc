@@ -1,0 +1,30 @@
+class Solution {
+public:
+    int maxSumSubmatrix(vector<vector<int>>& matrix, int k) {
+        if(matrix.empty() || matrix[0].empty())
+        	return 0;
+        int m = matrix.size();
+        int n = matrix[0].size();
+        int sum[m][n], res = INT_MIN;
+        for(int i = 0; i < m; i++){
+        	for(int j = 0; j < n; j++){
+        		int tmp = matrix[i][j];
+        		if(i > 0)	tmp += sum[i - 1][j];
+        		if(j > 0)	tmp += sum[i][j - 1];
+        		if(i > 0 && j > 0)	tmp -= sum[i - 1][j - 1];
+        		sum[i][j] = tmp;
+        		for(int u = 0; u <= i; u++){
+        			for(int v = 0; v <= j; v++){
+        				int t = sum[i][j];
+        				if(u > 0)	t -= sum[u - 1][j];
+        				if(v > 0)	t -= sum[i][v - 1];
+        				if(u > 0 && v > 0)	t += sum[u - 1][v - 1];
+        				if(t <= k)	res = max(res, t);
+					}
+				}
+			}
+		}
+		return res;
+    }
+};
+//brute O(m^2*n^2)
