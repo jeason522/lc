@@ -1,0 +1,16 @@
+class Solution {
+public:
+    vector<int> numsSameConsecDiff(int n, int k) {
+        vector<int> res{1, 2, 3, 4, 5, 6, 7, 8, 9};
+        for(int i = 1; i < n; ++i){
+        	vector<int> cur;
+        	for(int num: res){
+        		int digit = num % 10;
+        		if(digit + k <= 9)	cur.push_back(num * 10 + digit + k);
+        		if(digit - k >= 0 && k != 0)	cur.push_back(num * 10 + digit - k);
+			}
+			res = cur;
+		}
+		return res;
+    }
+};
