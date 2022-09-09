@@ -1,0 +1,18 @@
+bool cmp(vector<int>& a, vector<int>& b){
+	if(a[0] != b[0])	return a[0] > b[0];
+	return a[1] < b[1];
+}
+class Solution {
+public:
+    int numberOfWeakCharacters(vector<vector<int>>& properties) {
+        int count = 0, max = INT_MIN;
+        sort(properties.begin(), properties.end(), cmp);
+        for(vector<int>& v: properties){
+        	if(v[1] >= max){
+        		max = v[1];
+        		++count;
+			}
+		}
+		return properties.size() - count;
+    }
+};
